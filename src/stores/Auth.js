@@ -6,19 +6,24 @@ import userSignUpRequest from "../api/user/userSignUpRequest.js";
 export const useAuthStore = defineStore("auth", () => {
   const authToken = ref(null);
   const isUserAuthenticated = ref(false);
+  const isThereLoginError = ref(false);
 
   const getUserToken = computed(() => {
     return authToken.value;
   });
 
   async function userLogin(userLoginCred) {
-    const { user, status } = await userLoginRequest(userLoginCred);
-    console.log(user.idToken);
-    authToken.value = user.idToken;
-    if ((status === 200) & !!user.idToken) {
-      isUserAuthenticated.value = true;
+    const { user, status, error } = await userLoginRequest(userLoginCred);
+    // console.log(user.idToken);
+    if (!error) {
+      if ((status === 200) & !!user.idToken) {
+        authToken.value = user.idToken;
+        isUserAuthenticated.value = true;
+        isThereLoginError = false;
+      }
     } else {
       isUserAuthenticated.value = false;
+      isThereLoginError.value = true;
     }
   }
 
@@ -36,5 +41,6 @@ export const useAuthStore = defineStore("auth", () => {
     userLogin,
     userSignUp,
     logoutUser,
+    isThereLoginError,
   };
 });

@@ -1,6 +1,7 @@
 <template>
-  <div class="p-4 flex flex-row bg-teal-300 flex-nowrap gap-4 justify-items-center items-center">
+  <div class="p-4 flex flex-row flex-nowrap gap-4 justify-items-center items-center">
     <TheAdminSideBar @admin-action="setAdminAction" />
+    <div class="h-screen"></div>
     <AdminAddProductForm v-if="activeFormType === 'add'" />
     <AdminDeleteProductsList v-else-if="activeFormType === 'delete'" />
     <AdminEditProductsList v-else-if="activeFormType === 'update'" />

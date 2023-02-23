@@ -1,13 +1,13 @@
 <template>
   <ul>
     <div class="flex flex-col" v-for="(product, index) in allProducts" :key="product.id">
-      <li class="flex flex-row m-2 shadow-md p-3 cursor-pointer shadow-sky-800 items-center justify-items-center">
+      <li class="flex flex-row m-2 rounded-xl p-3 cursor-pointer shadow-3ht items-center justify-items-center">
         <img :src="product.image" alt="image" class="block w-14 h-14 mr-2" />
-        <p class="block grow text-violet-900 font-medium text-center">
+        <p class="block grow text-gray-900  font-bold text-center">
           {{ product.title }}
         </p>
 
-        <p class="block grow text-violet-900 font-medium text-center">
+        <p class="block grow text-gray-900 font-bold text-center">
           Rs. {{ product.price }}
         </p>
         <slot name="button" :product="product">

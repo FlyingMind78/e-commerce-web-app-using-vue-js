@@ -1,5 +1,5 @@
 <template>
-  <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 grow">
+  <form class="bg-transparent  backdrop-blur-xl shadow-3ht rounded px-8 pt-6 pb-8 mb-4 grow">
     <slot></slot>
   </form>
 </template>

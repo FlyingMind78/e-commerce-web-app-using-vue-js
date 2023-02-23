@@ -1,26 +1,54 @@
 <template>
+  <!-- class="block max-w-sm p-7 pb-20 bg-white cursor-pointer border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700" -->
   <a
-    class="block max-w-sm p-7 pb-20 bg-white cursor-pointer border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-    <img :src="imageUrl" alt="Image" class="w-1/4 h-1/4 m-2" />
+    class=" cursor-pointer overflow-hidden max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <img :src="imageUrl" alt="Image" class="rounded-t-lg h-1/3 m-2 " />
+    <div class="p-5">
 
-    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-      {{ title }}
-    </h5>
+      <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+        {{ title }}
+      </h5>
 
-    <p class="text-md m-2">Price:{{ price }}</p>
-    <span>{{ category }}</span>
-    <p class="font-normal block truncate  text-gray-700 dark:text-gray-400">
-      {{ description }}
-    </p>
+      <p class="text-md m-4">
+        <span class="text-lg text-red-900 font-medium">
+          Price:
+        </span>
+        <span class="text-md bg-teal-800 text-white rounded-lg px-2 py-0.5 text-center font-medium ml-1">
 
-    <p class="block m-2">
-      Rating :{{ rating.rate }} out of {{ rating.count }}
-    </p>
-    <base-button btnName="Add to cart" class="mt-4"></base-button>
+          Rs. {{ price }}
+        </span>
+      </p>
+
+      <base-badge :badgeName="category" :badgeColor="randomColor"></base-badge>
+
+
+      <p class=" block mt-3 text-md text-purple-900 font-medium leading-7 p-2">
+        {{ description.slice(0, 160) + " ..." }}
+      </p>
+
+      <p class="block m-2">
+        <span class="text-lg text-rose-900 font-medium">
+          Rating :
+
+        </span>
+        <span class="text-md bg-green-800 text-white rounded-lg px-2 py-0.5 text-center font-medium ml-1">
+          {{ rating.rate }}
+        </span>
+        <span class="text-md bg-sky-900 text-white rounded-lg px-2 py-0.5 text-center font-medium ml-1">
+          out of
+        </span>
+        <span class="text-md bg-red-800 text-white rounded-lg px-2 py-0.5 text-center font-medium ml-1">
+          {{ rating.count }}
+        </span>
+
+      </p>
+      <base-button btnName="Add to cart" class="mt-4"></base-button>
+    </div>
 
   </a>
 </template>
 <script setup>
+import { computed } from "vue"
 const props = defineProps({
   title: String,
   price: Number,
@@ -29,4 +57,14 @@ const props = defineProps({
   category: String,
   rating: Object,
 });
+
+
+const colors = ["red", 'gray', "purple", "yellow", "pink", "blue", "green"]
+
+const randomColor = computed(randColor)
+function randColor() {
+  return colors[Math.floor(Math.random() * colors.length)]
+
+}
+
 </script>

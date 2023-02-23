@@ -8,5 +8,6 @@ export default async function (userCredLogin) {
   return {
     user: response.data,
     status: response.status,
+    error: response.code === "ERR_BAD_REQUEST" ? true : false,
   };
 }

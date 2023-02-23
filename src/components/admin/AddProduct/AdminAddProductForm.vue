@@ -1,5 +1,5 @@
 <template>
-  <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 grow" @submit.prevent>
+  <form class="bg-transparent  shadow-3ht rounded px-8 pt-6 pb-8 mb-4 grow" @submit.prevent>
     <h3 class="text-xl font-bold text-center">Add a product</h3>
 
     <div class="mb-4">

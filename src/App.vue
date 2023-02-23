@@ -7,7 +7,7 @@
     <router-view> </router-view>
   </div>
 </template>
-
+  
 <script setup>
 import TheNavigationBar from "./components/TheNavigationBar/TheNavigationBar.vue";
 import TheSideBar from "./components/TheSideBar/TheSideBar.vue";
@@ -24,11 +24,15 @@ onMounted(() => {
   setProducts();
 });
 router.beforeEach((to, from, next) => {
-  console.log("Route TO :", to, from);
+  // console.log("Route TO :", to, from);
   if (to.meta.requiresAuth && !isUserAuthenticated.value) {
     next(false)
     router.push('/auth')
   } else {
+    if (to.path === "/auth" && isUserAuthenticated.value) {
+      next(false)
+      router.push("/")
+    }
     next()
   }
 });
@@ -38,3 +42,4 @@ components: {
   TheSideBar;
 }
 </script>
+

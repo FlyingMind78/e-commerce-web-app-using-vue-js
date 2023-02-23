@@ -1,8 +1,7 @@
 <template>
   <button
-    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-    type="button"
-  >
+    class="bg-gradient-to-r from-LC1 LC2 to-LC3 hover:text-slate-800  text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+    type="button">
     {{ btnName }}
   </button>
 </template>
