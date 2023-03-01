@@ -29,6 +29,7 @@
       </a>
 
       <div class="flex items-center justify-between">
+
         <base-button btnName="Login In" @click="loginHandler"> </base-button>
         <a class="inline-block align-baseline font-bold text-sm text-white hover:text-gray-900" href="#">
           Forgot Password?

@@ -34,7 +34,11 @@ const router = createRouter({
       component: AdminViewModel,
       meta: { requiresAuth: true },
     },
-    ,
+    {
+      path: "/users/:id/carts",
+      component: null,
+      meta: { requiresAuth: true },
+    },
   ],
 });
 

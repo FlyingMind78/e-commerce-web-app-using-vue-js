@@ -11,8 +11,7 @@
     <div
       class="w-48 mt-10 text-gray-900 bg-transparent  shadow-gls rounded-lg dark:bg-white dark:border-white dark:text-white">
       <AdminBaseButton btnText="Add a Product" @click="adminAction('add')" />
-      <AdminBaseButton btnText="Delete a Product" @click="adminAction('delete')" />
-      <AdminBaseButton btnText="Update  a Product" @click="adminAction('update')" />
+      <AdminBaseButton btnText="Update & Delete a Product" @click="adminAction('update&delete')" />
     </div>
   </div>
 </template>

@@ -3,16 +3,14 @@
     <TheAdminSideBar @admin-action="setAdminAction" />
     <div class="h-screen"></div>
     <AdminAddProductForm v-if="activeFormType === 'add'" />
-    <AdminDeleteProductsList v-else-if="activeFormType === 'delete'" />
-    <AdminEditProductsList v-else-if="activeFormType === 'update'" />
+    <AdminDeleteAndEditProducts v-else-if="activeFormType === 'update&delete'" />
   </div>
 </template>
 
 <script setup>
 import TheAdminSideBar from "../components/admin/TheAdminSideBar.vue";
 import AdminAddProductForm from "../components/admin/AddProduct/AdminAddProductForm.vue";
-import AdminDeleteProductsList from "../components/admin/Delete Product/AdminDeleteProductsList.vue";
-import AdminEditProductsList from "../components/admin/Edit Product/AdminEditProductsList.vue";
+import AdminDeleteAndEditProducts from "../components/admin/Edit Product/AdminDeleteAndEditProducts.vue";
 
 import { ref, unref } from "vue";
 

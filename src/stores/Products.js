@@ -6,12 +6,15 @@ import postProduct from "../api/postProduct.js";
 import deleteProductFirebase from "../api/deleteProductFirebase.js";
 import updateProductFirebase from "../api/updateProductFirebase.js";
 import getAllProducts from "../api/getAllProducts.js";
+import router from "../router/index.js";
 
 export const useProductsStore = defineStore("products", () => {
   const products = ref([]);
   const productsCategories = ref([]);
   const filteredProducts = ref([]);
   const productsKeysValuesArray = ref(null);
+
+  const initialHomeProducts = ref([]);
 
   const getProducts = computed(() => {
     return products.value;
@@ -31,6 +34,7 @@ export const useProductsStore = defineStore("products", () => {
       products.value = allProducts;
       productsKeysValuesArray.value = _productsArry;
       loadProductCategories();
+      initialHomeProducts.value = allProducts.slice(0, 3);
     }
   }
 
@@ -78,6 +82,7 @@ export const useProductsStore = defineStore("products", () => {
         editedProduct,
         ...unref(useArrayFilter(products, (prod) => prod.id !== prodId)),
       ];
+      router.push("/");
       loadProductCategories();
     }
   }
@@ -86,12 +91,13 @@ export const useProductsStore = defineStore("products", () => {
     const response = await postProduct(newProduct);
     if (response.status === 200) {
       products.value = [...products.value, newProduct];
-
+      router.push("/");
       loadProductCategories();
     }
   }
 
   return {
+    initialHomeProducts,
     getProducts,
     setProducts,
     filterProducts,

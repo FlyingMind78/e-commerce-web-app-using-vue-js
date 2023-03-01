@@ -20,12 +20,10 @@ const { getFilteredProducts } = storeToRefs(useProductsStore());
 watch(
   () => route.params.categoryId,
   async (newId) => {
-    // console.log("Products filter route change: ", filterProducts(newId));
     filterProducts(newId);
   }
 );
 onMounted(() => {
-  // console.log("Products filter: ", filterProducts(category));
   filterProducts(category);
 });
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class=" ">
     <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar"
       type="button"
       class="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
@@ -11,10 +11,11 @@
       </svg>
     </button>
 
-    <aside class="  fixed  left-5 top-24 bottom-8 z-40 w-64 h-46 transition-transform -translate-x-full sm:translate-x-0"
+    <aside
+      class="  fixed  left-5 top-24 bottom-8 z-40 w-64 h-46 transition-transform -translate-x-full sm:translate-x-0  overflow-hidden"
       aria-label="Sidebar">
       <div
-        class="h-full mx-3 px-4  rounded-lg shadow-3ht  border-solid  border-zinc-500 py-4 backdrop-blur-xl overflow-y-auto bg-glass dark:bg-gray-800">
+        class="h-full mx-3 px-4    rounded-lg shadow-3ht  border-solid  border-zinc-500 py-4 backdrop-blur-xl overflow-y-auto bg-glass dark:bg-gray-800">
         <ul class="space-y-2">
           <li>
             <router-link to="/auth/admin"

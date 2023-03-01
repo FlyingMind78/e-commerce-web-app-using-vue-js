@@ -2,6 +2,7 @@ import { defineStore } from "pinia";
 import { ref, computed } from "vue";
 import userLoginRequest from "../api/user/userLoginRequest.js";
 import userSignUpRequest from "../api/user/userSignUpRequest.js";
+import router from "../router/index.js";
 
 export const useAuthStore = defineStore("auth", () => {
   const authToken = ref(null);
@@ -14,12 +15,12 @@ export const useAuthStore = defineStore("auth", () => {
 
   async function userLogin(userLoginCred) {
     const { user, status, error } = await userLoginRequest(userLoginCred);
-    // console.log(user.idToken);
     if (!error) {
       if ((status === 200) & !!user.idToken) {
         authToken.value = user.idToken;
         isUserAuthenticated.value = true;
-        isThereLoginError = false;
+        isThereLoginError.value = false;
+        router.push("/");
       }
     } else {
       isUserAuthenticated.value = false;
