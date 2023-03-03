@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeViewModel from "../viewModel/HomeViewModel.vue";
+// import HomeViewModel from "../viewModel/HomeViewModel.vue";
 import AuthViewModel from "../viewModel/AuthViewModel.vue";
 import ProductsViewModel from "../viewModel/ProductsViewModel.vue";
 import ProductsFilterViewModel from "../viewModel/ProductsFilterViewModel.vue";
@@ -9,9 +9,9 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: "/home",
-      alias: "/",
-      component: HomeViewModel,
+      path: "/",
+      alias: "/home",
+      component: () => import("../viewModel/HomeViewModel.vue"),
       meta: { requiresAuth: false },
     },
     {

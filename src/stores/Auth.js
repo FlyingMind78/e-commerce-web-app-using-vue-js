@@ -1,29 +1,25 @@
 import { defineStore } from "pinia";
-import { ref, computed } from "vue";
+import { ref } from "vue";
 import userLoginRequest from "../api/user/userLoginRequest.js";
 import userSignUpRequest from "../api/user/userSignUpRequest.js";
 import router from "../router/index.js";
+import { useStorage } from "@vueuse/core";
+import { useCookies } from "@vueuse/integrations/useCookies";
 
 export const useAuthStore = defineStore("auth", () => {
-  const authToken = ref(null);
-  const isUserAuthenticated = ref(false);
+  const authToken = useStorage("authUserID", null);
   const isThereLoginError = ref(false);
-
-  const getUserToken = computed(() => {
-    return authToken.value;
-  });
+  const cookies = useCookies();
 
   async function userLogin(userLoginCred) {
     const { user, status, error } = await userLoginRequest(userLoginCred);
     if (!error) {
       if ((status === 200) & !!user.idToken) {
         authToken.value = user.idToken;
-        isUserAuthenticated.value = true;
         isThereLoginError.value = false;
         router.push("/");
       }
     } else {
-      isUserAuthenticated.value = false;
       isThereLoginError.value = true;
     }
   }
@@ -34,11 +30,11 @@ export const useAuthStore = defineStore("auth", () => {
   }
 
   function logoutUser() {
-    isUserAuthenticated.value = false;
-    authToken.value = "";
+    authToken.value = null;
   }
   return {
-    isUserAuthenticated,
+    authToken,
+    cookies,
     userLogin,
     userSignUp,
     logoutUser,

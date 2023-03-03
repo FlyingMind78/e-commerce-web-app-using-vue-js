@@ -44,11 +44,11 @@
             <router-link to="/products" class="block py-2 pl-3 pr-4 text-white text-lg rounded"
               aria-current="page">Products</router-link>
           </li>
-          <li v-if="!isUserAuthenticated">
+          <li v-if="!!!authToken">
             <router-link to="/auth" class="block py-2 pl-3 pr-4 text-white text-lg rounded">Login</router-link>
           </li>
 
-          <li v-else-if="isUserAuthenticated" @click="logoutUserHandler">
+          <li v-else-if="!!authToken" @click="logoutUserHandler">
             <router-link to="/" class="block py-2 pl-3 pr-4 text-white text-lg rounded">Logout
             </router-link>
           </li>
@@ -68,11 +68,11 @@
     v-if="isLogoutDialogShown"></logout-modal-error-dialog>
 </template>
 <script setup>
-import { useAuthStore } from "../../stores/auth.js"
+import { useAuthStore } from "../../stores/Auth.js"
 import { storeToRefs } from "pinia"
 import { ref } from "vue";
 import LogoutModalErrorDialog from "./LogoutModalErrorDialog.vue";
-const { isUserAuthenticated } = storeToRefs(useAuthStore())
+const { authToken } = storeToRefs(useAuthStore())
 const { logoutUser } = useAuthStore();
 const isLogoutDialogShown = ref(false)
 const isUserSureLogout = ref(null)

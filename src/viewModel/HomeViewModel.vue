@@ -2,6 +2,8 @@
   <div class="w-full  h-full p-4 border-2 border-gray-200  rounded-lg dark:border-gray-700">
     <div class="h-full">
       <div class="flex flex-col items-center">
+
+
         <span
           class="italic inline-block text-5xl p-3 font-bold bg-gradient-to-r  from-[#080749] via-[#721a96] to-[#0d799c] text-transparent bg-clip-text ">
           The
@@ -22,6 +24,9 @@
       <div class="drop-shadow-lg bg-white m-auto w-[75%] p-5   rounded-lg shadow-gls">
 
         <h4 class="font-bold text-teal-800 text-center text-2xl mb-4">E-COMMERCE APP </h4>
+
+
+
         <p class="text-lg font-medium indent-10 leading-7 tracking-wide mb-3">
           E-commerce is revolutionizing the way we all shop in India. Why do you want to
           hop from one store to another?
@@ -35,11 +40,11 @@
         </h2>
         <p class="text-lg indent-10 leading-7 text-gray-900  font-medium tracking-wide mb-5">
 
-          A brand isn’t built overnight. It needs plenty of time to develop—and lots of trial and error. Few stores hit
+          A brand isn't built overnight. It needs plenty of time to develop—and lots of trial and error. Few stores hit
           the nail on the head on their first attempt at developing a brand.
 
 
-          But regardless of whether you’re creating a brand from scratch or rethinking your current branding, there are
+          But regardless of whether you're creating a brand from scratch or rethinking your current branding, there are
           nine indispensable elements of any branding strategy.
 
 
@@ -88,7 +93,7 @@
         <p class="text-lg indent-10 text-purple-700 leading-7 font-medium tracking-wide">
           95% of what marketing today is being spent on creating demand through being over-skewed on acquisition. And for
           a long-standing customer relationship to come to fruition, the focus needs to shift to creating demand—which is
-          answered by a long-term approach to building a brand.
+          answered by a long-term approach to building a brand
 
         </p>
 
@@ -114,6 +119,13 @@
 import { useProductsStore } from "../stores/Products.js"
 import { storeToRefs } from "pinia";
 import ProductsCard from "../components/products/ProductsCard.vue";
+
 const { initialHomeProducts } = storeToRefs(useProductsStore())
+
+
+
+
+
+
 
 </script>
